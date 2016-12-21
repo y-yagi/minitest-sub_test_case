@@ -24,29 +24,22 @@ class Minitest::SubTestCaseTest < Minitest::Test
   def test_run_sub_test
     test_case = Class.new(Minitest::Test)
     sub_test_case = test_case.sub_test_case("Sub") do
-      def test_success
-        assert true
-      end
-
-      def test_fail
-        assert false
-      end
+      def test_sub_success; assert true; end
+      def test_sub_fail; assert false; end
     end
 
     run_test(sub_test_case)
-    assert_match /::Sub#test_fail/, first_reporter.results.first.to_s
+    assert_match /::Sub#test_sub_fail/, first_reporter.results.first.to_s
   end
 
   def test_run_sub_sub_test
     test_case = Class.new(Minitest::Test)
     sub_test_case = test_case.sub_test_case("Sub") {}
     sub_sub_test_case = sub_test_case.sub_test_case("SubSub") do
-      def test_fail
-        assert false
-      end
+      def test_sub_sub_fail; assert false; end
     end
 
     run_test(sub_sub_test_case)
-    assert_match /::Sub::SubSub#test_fail/, first_reporter.results.first.to_s
+    assert_match /::Sub::SubSub#test_sub_sub_fail/, first_reporter.results.first.to_s
   end
 end
