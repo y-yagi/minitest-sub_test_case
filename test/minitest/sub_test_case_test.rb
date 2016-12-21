@@ -31,7 +31,8 @@ class Minitest::SubTestCaseTest < Minitest::Test
     end
 
     run_test(sub_test_case)
-    assert_match /::Sub#test_sub_fail/, first_reporter.results.first.to_s
+
+    assert_match(/::Sub#test_sub_fail/, first_reporter.results.first.to_s)
     assert_equal %w(test_sub_fail test_sub_success), sub_test_case.runnable_methods.sort
   end
 
@@ -47,7 +48,8 @@ class Minitest::SubTestCaseTest < Minitest::Test
     end
 
     run_test(sub_sub_test_case)
-    assert_match /::Sub::SubSub#test_sub_sub_fail/, first_reporter.results.first.to_s
+
+    assert_match(/::Sub::SubSub#test_sub_sub_fail/, first_reporter.results.first.to_s)
     assert_equal %w(test_sub_sub_fail), sub_sub_test_case.runnable_methods.sort
   end
 end
