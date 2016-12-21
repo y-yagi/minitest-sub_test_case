@@ -6,13 +6,11 @@ module Minitest
     def sub_test_case(name, &block)
       parent_test_case = self
       sub_test_case = Class.new(self) do
+        self.nuke_test_methods!
+
         define_singleton_method(:class_name) do
           class_name = defined?(parent_test_case.class_name) ? parent_test_case.class_name : parent_test_case
           [class_name, name].compact.join("::")
-        end
-
-        define_singleton_method(:methods_matching) do |re|
-          super(re) - parent_test_case.methods_matching(re)
         end
 
         define_method(:location) do
@@ -23,6 +21,12 @@ module Minitest
 
       sub_test_case.class_eval(&block)
       sub_test_case
+    end
+
+    def nuke_test_methods!
+      self.public_instance_methods.grep(/^test_/).each do |name|
+        self.send :undef_method, name
+      end
     end
   end
 end
