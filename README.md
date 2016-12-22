@@ -1,8 +1,6 @@
 # Minitest::SubTestCase
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/minitest/sub_test_case`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`minitest-sub_test_case` makes `sub_test_case` method available in minitest/test.
 
 ## Installation
 
@@ -22,7 +20,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'test_helper'
+
+class UserTest < Minitest::Test
+  sub_test_case 'validation' do
+    def test_invalid_name
+      assert false
+    end
+
+    def test_invalid_email
+      assert false
+    end
+  end
+
+  def test_user_can_create_todo
+    assert false
+  end
+end
+```
+
 
 ## Development
 
@@ -32,7 +49,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/minitest-sub_test_case. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/y-yagi/minitest-sub_test_case. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License

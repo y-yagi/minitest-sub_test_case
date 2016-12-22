@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yuji Yaginuma"]
   spec.email         = ["yuuji.yaginuma@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.homepage      = ""
+  spec.summary       = %q{minitest-sub_test_case makes sub_test_case available in minitest/test.}
+  spec.homepage      = "https://github.com/y-yagi/minitest-sub_test_case"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
