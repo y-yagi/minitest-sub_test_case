@@ -2,6 +2,9 @@
 
 `minitest-sub_test_case` makes `sub_test_case` method available in minitest/test.
 
+[![Build Status](https://travis-ci.org/y-yagi/minitest-sub_test_case.svg?branch=master)](https://travis-ci.org/y-yagi/minitest-sub_test_case)
+[![Gem Version](https://badge.fury.io/rb/minitest-sub_test_case.svg)](http://badge.fury.io/rb/minitest-sub_test_case)
+
 ## Installation
 
 Add this line to your application's Gemfile:
