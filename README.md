@@ -43,6 +43,52 @@ class UserTest < Minitest::Test
 end
 ```
 
+You can also use it with the Rails test class.
+
+```ruby
+require 'test_helper'
+
+class PageTest < ActiveSupport::TestCase
+  test 'recently updated pages group by date' do
+    ...
+  end
+
+  test 'find page when use valid title' do
+    ...
+  end
+
+  sub_test_case 'validation' do
+    test 'validate error when set invalid title' do
+      ...
+    end
+  end
+end
+```
+
+```ruby
+require 'test_helper'
+
+class BooksTest < ActionDispatch::IntegrationTest
+  setup do
+    ...
+  end
+
+  sub_test_case('create book with author') do
+    setup do
+      ...
+    end
+
+    test "fail" do
+      ...
+    end
+  end
+
+  test "success" do
+    ...
+  end
+end
+```
+
 
 ## Development
 
