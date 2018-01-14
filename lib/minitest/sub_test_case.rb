@@ -19,6 +19,7 @@ module Minitest
           class_name
         end
 
+        # NOTE: `location` method needs only for support of Minitest < 5.11.
         define_method(:location) do
           loc = " [#{self.failure.location}]" unless passed? or error?
           "#{self.class.class_name}##{self.name}#{loc}"
