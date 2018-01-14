@@ -15,6 +15,10 @@ module Minitest
           super(re) - parent_test_case.methods_matching(re)
         end
 
+        define_singleton_method(:name) do
+          class_name
+        end
+
         define_method(:location) do
           loc = " [#{self.failure.location}]" unless passed? or error?
           "#{self.class.class_name}##{self.name}#{loc}"
