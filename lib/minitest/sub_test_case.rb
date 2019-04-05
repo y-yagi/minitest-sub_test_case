@@ -24,6 +24,15 @@ module Minitest
           loc = " [#{self.failure.location}]" unless passed? or error?
           "#{self.class.class_name}##{self.name}#{loc}"
         end
+
+        # NOTE: These methods need for Rails's parallel testing that uses DRb.
+        define_method(:marshal_dump) do
+          [self.name]
+        end
+
+        define_method(:marshal_load) do |ary|
+          self.name = ary
+        end
       end
 
       sub_test_case.class_eval(&block)
